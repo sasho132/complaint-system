@@ -1,8 +1,9 @@
 import sqlalchemy
-from models.enums import RoleType
-from db import metadata
 
-users = sqlalchemy.Table(
+from db import metadata
+from models.enums import RoleType
+
+user = sqlalchemy.Table(
     "users",
     metadata,
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
