@@ -8,7 +8,7 @@ user = sqlalchemy.Table(
     metadata,
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
     sqlalchemy.Column("email", sqlalchemy.String(120), unique=True),
-    sqlalchemy.Column("email", sqlalchemy.String(255)),
+    sqlalchemy.Column("password", sqlalchemy.String(255)),
     sqlalchemy.Column("first_name", sqlalchemy.String(200)),
     sqlalchemy.Column("last_name", sqlalchemy.String(200)),
     sqlalchemy.Column("phone", sqlalchemy.String(20)),
