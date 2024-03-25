@@ -1,4 +1,5 @@
 from db import database
+from managers import user
 from models import complaint, RoleType, State
 
 
@@ -13,6 +14,11 @@ class ComplaintManager:
         return await database.fetch_all(q)
 
     @staticmethod
-    async def create_complaint(coplaint_data):
+    async def create_complaint(coplaint_data, user):
+        coplaint_data["complainer_id"] = user["id"]
         id_ = await database.execute(complaint.insert().values(coplaint_data))
         return await database.fetch_one(complaint.select().where(complaint.c.id == id_))
+
+    @staticmethod
+    async def delete(complaint_id):
+        await database.execute(complaint.delete().where(complaint.c.id == complaint_id))

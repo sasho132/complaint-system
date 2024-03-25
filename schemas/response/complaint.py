@@ -1,5 +1,4 @@
 from datetime import datetime
-from pydantic import BaseModel
 from schemas.base import BaseComplaint
 
 from models.enums import State
