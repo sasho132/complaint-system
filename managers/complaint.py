@@ -1,6 +1,6 @@
 from db import database
 from managers import user
-from models import complaint, RoleType, State
+from models import RoleType, State, complaint
 
 
 class ComplaintManager:
@@ -22,3 +22,19 @@ class ComplaintManager:
     @staticmethod
     async def delete(complaint_id):
         await database.execute(complaint.delete().where(complaint.c.id == complaint_id))
+
+    @staticmethod
+    async def approve(id_):
+        await database.execute(
+            complaint.update()
+            .where(complaint.c.id == id_)
+            .values(status=State.approved)
+        )
+
+    @staticmethod
+    async def reject(id_):
+        await database.execute(
+            complaint.update()
+            .where(complaint.c.id == id_)
+            .values(status=State.rejected)
+        )
