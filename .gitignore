@@ -161,3 +161,8 @@ cython_debug/
 
 # VSCode
 .vscode/
+
+/temp_files/*
+
+# MacOS specific
+.DS_Store
