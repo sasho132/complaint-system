@@ -28,6 +28,7 @@ class ComplaintManager:
         path = os.path.join(TEMP_FILE_FOLDER, name)
         decode_photo(path, encoded_photo)
         coplaint_data["photo_url"] = file_upload(name, path)
+        os.remove(path)
         id_ = await database.execute(complaint.insert().values(coplaint_data))
         return await database.fetch_one(complaint.select().where(complaint.c.id == id_))
 
